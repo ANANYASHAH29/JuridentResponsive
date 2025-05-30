@@ -1,19 +1,15 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import Testimonials from "./components/Testimonials";
-import HeroSection from "./components/HeroSection";
-import Features from "./components/Features";
-import GetApp from "./components/GetApp";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
+import { Outlet } from "react-router-dom";
 function App() {
   return (
-    <div className="bg-white">
+    <div className="bg-white scroll-smooth">
       <Navbar />
-      <HeroSection />
-      <Features />
-      <Testimonials />
-      <GetApp />
+      <Outlet />
       <Footer />
+
     </div>
   );
 }

@@ -28,7 +28,7 @@ const Testimonials = () => {
       {/* Heading */}
       <h2 className="text-4xl font-bold text-[#141414]">Testimonials</h2>
       <p className="text-lg text-[#141414]">
-        Trusted By Professionals, Empowering Justice For All.
+        Trusted By Professionals, Empowering Justice.
       </p>
 
       {/* See All Button */}

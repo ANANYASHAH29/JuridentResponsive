@@ -7,7 +7,7 @@ import JLogoFoot from "../assets/JLogoFoot2.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#141414] text-white py-10 px-6 md:px-20">
+    <footer className="bg-black text-white py-10 px-6 md:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
         {/* Left Section - Company Info */}
         <div>
@@ -55,7 +55,7 @@ export default function Footer() {
         <div>
           <h2 className="text-white text-lg font-bold mb-3">Company</h2>
           <ul className="space-y-2 text-sm">
-            <li>About Us</li>
+            <li> aboutUs</li>
             <li>Careers</li>
             <li>FAQs</li>
             <li>Teams</li>
@@ -65,7 +65,7 @@ export default function Footer() {
 
       {/* Bottom Section */}
       <div className="mt-6 border-t border-gray-600 pt-4 text-left text-sm">
-        © 2025, Valsco Technologies. All Rights Reserved
+        © 2025, Valsco Technology. All Rights Reserved
       </div>
     </footer>
   );
