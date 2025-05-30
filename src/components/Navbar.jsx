@@ -50,7 +50,11 @@ export default function Navbar() {
       {/* Buttons Section (Auto Spacing) */}
       <div className="flex flex-shrink-0 gap-[38px]">
         {/* Sign Up Button */}
-        <button className="bg-black text-white px-6 py-2 rounded-2xl font-semibold hover:bg-opacity-30 transition-all duration-700 transform hover:scale-105">
+
+        
+        <button
+        onClick={() => window.open("https://jr-portal.vercel.app/", "_blank")}
+         className="bg-black text-white px-6 py-2 rounded-2xl font-semibold hover:bg-opacity-30 transition-all duration-700 transform hover:scale-105">
           Explore Jurident
         </button>
         {/* Book a Demo Button with Gradient Border */}
