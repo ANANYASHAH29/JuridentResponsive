@@ -55,10 +55,10 @@ export default function Footer() {
         <div>
           <h2 className="text-white text-lg font-bold mb-3">Company</h2>
           <ul className="space-y-2 text-sm">
-            <li> aboutUs</li>
+            <li> <a href="https://www.valscotech.com/" target="_Blank">aboutUs</a> </li>
             <li>Careers</li>
             <li>FAQs</li>
-            <li>Teams</li>
+            <li><a href="https://www.valscotech.com/" target="_Blank">Teams</a> </li>
           </ul>
         </div>
       </div>

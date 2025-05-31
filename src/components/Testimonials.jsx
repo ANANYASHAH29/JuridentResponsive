@@ -1,28 +1,30 @@
 import React from "react";
 import { User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const testimonials = [
   {
-    text: "“Jurident has streamlined my case management. The automated document generation saves me so much time! Highly recommended for legal professionals.”",
-    name: "Lorem Ipsum",
-    role: "Lawyer/a",
+    text: "“Efficient to use and easy to handle, this case management application has streamlined my workflow significantly. Managing clients, documents, and schedules has never been this smooth—it's truly a game-changer for legal professionals.”",
+    name: "Ayush Mangal Gupta",
+    role: "Lawyer/High Court",
     borderColor: "shadow-[inset_0px_4px_22px_#C9D4FF]",
   },
   {
-    text: "“Jurident has streamlined my case management. The automated document generation saves me so much time! Highly recommended for legal professionals.”",
-    name: "Lorem Ipsum",
-    role: "Lawyer/b",
+    text: "“Highly efficient and remarkably intuitive, this case management application has transformed the way I organize my legal work. The intelligent case scheduling feature simplifies the process of binding and tracking cases, ensuring nothing falls through the cracks.”",
+    name: "Vasu Sangal",
+    role: "Lawyer/District Court",
     borderColor: "shadow-[inset_0px_4px_22px_#B4F8C8]",
   },
   {
-    text: "“Jurident has streamlined my case management. The automated document generation saves me so much time! Highly recommended for legal professionals.”",
-    name: "Lorem Ipsum",
-    role: "Lawyer/c",
+    text: "“The team assistance feature is a standout addition that greatly enhances collaboration. It allows effortless sharing of case details, tasks, and updates among peers, ensuring everyone stays aligned and informed throughout the legal process.”",
+    name: "Ajay Kumar",
+    role: "Lawyer/Supreme Court",
     borderColor: "shadow-[inset_0px_4px_22px_#FFD699]",
   },
 ];
 
 const Testimonials = () => {
+  const navigate = useNavigate();
   return (
     <section className="px-8 md:px-20 py-10 space-y-6 max-w-7xl mx-auto text-center">
       {/* Heading */}
@@ -32,7 +34,7 @@ const Testimonials = () => {
       </p>
 
       {/* See All Button */}
-      <button className="border-2 border-black px-6 py-2 rounded-2xl font-semibold transition-transform duration-500 ease-out shadow-md hover:scale-105 hover:shadow-lg">
+      <button className="border-2 border-black px-6 py-2 rounded-2xl font-semibold transition-transform duration-500 ease-out shadow-md hover:scale-105 hover:shadow-lg" onClick={() => navigate("/testimonials")}>
         See All
       </button>
 
