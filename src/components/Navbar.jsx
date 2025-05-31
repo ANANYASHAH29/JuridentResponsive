@@ -6,7 +6,7 @@ import { HashLink } from "react-router-hash-link";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
-  const hrefs = ["#features", "/aboutUs", "#ai", "#help"]; // example targets
+  const hrefs = ["#features", "/aboutUs", "/aiDrafting", "#help"]; // example targets
   const navigate = useNavigate();
 
   return (
@@ -58,7 +58,8 @@ export default function Navbar() {
       <div className="flex flex-shrink-0 gap-[38px]">
         {/* Sign Up Button */}
         <button className="bg-black text-white px-4 py-2 rounded-2xl font-semibold hover:bg-opacity-30 transition-all duration-700 transform hover:scale-105">
-          Explore Jurident
+          <a href="https://jr-portal.vercel.app/" target="_Blank">Explore Jurident</a>
+
         </button>
         {/* Book a Demo Button with Gradient Border */}
         <div className="relative p-[2px] rounded-2xl bg-gradient-to-r from-[#23216E] via-[#D0A95C] to-[#23216E] transition-all duration-700 group hover:bg-gradient-to-r hover:from-[#D0A95C] hover:via-[#23216E] hover:to-[#D0A95C] transform hover:scale-105">

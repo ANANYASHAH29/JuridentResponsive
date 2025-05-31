@@ -1,4 +1,5 @@
 import React from "react";
+import { HashLink } from "react-router-hash-link";
 
 const HeroSection = () => {
   return (
@@ -15,7 +16,8 @@ const HeroSection = () => {
           {/* Button (Only Animates When Hovering Over It) */}
           <button className="mt-6 bg-[#D0A95C] text-white px-10 py-3 w-44 rounded-3xl text-lg font-semibold transition-all duration-300 relative overflow-hidden group/button">
             <span className="relative inline-block transition-all duration-300 ease-out group-hover/button:-translate-y-1 group-hover/button:scale-105">
-              Get Started
+              <HashLink to="#help" > Get Started</HashLink>
+
             </span>
             <span className="absolute left-1/2 bottom-0 w-0 h-2 bg-black/60 rounded-b-2xl transition-all duration-300 ease-out group-hover/button:w-full group-hover/button:left-0"></span>
           </button>
