@@ -95,8 +95,7 @@ const Features = () => {
           Elevate Your Legal Practice!
         </h2>
         <p className="text-[#141414] text-2xl mt-3">
-          Smart Lawyering, Simplified – Manage Cases, Clients, And Payments With
-          Ease.
+          Smart Lawyering, Simplified – Manage Cases, Clients, And We Provide Customizations As Per Your Needs.
         </p>
       </div>
 
