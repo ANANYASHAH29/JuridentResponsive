@@ -1,4 +1,3 @@
-import ContactUs from "./ContactUs";
 import Features from "./Features";
 import GetApp from "./GetApp";
 import HeroSection from "./HeroSection";
@@ -20,7 +19,6 @@ const Home = () => {
 
             <Testimonials />
             <GetApp />
-            <ContactUs />
         </div>
     );
 };
