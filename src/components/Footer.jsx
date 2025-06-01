@@ -47,7 +47,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white py-10 px-6 md:px-20">
+    <footer id="help" className="bg-black text-white py-10 px-6 md:px-20">
       {/* Contact Form Section */}
       <div className="max-w-7xl mx-auto mb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

@@ -1,4 +1,4 @@
-import { Children, StrictMode } from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -11,7 +11,32 @@ import AIDrafting from './components/AIDrafting.jsx'
 import AllTestimonials from './components/AllTestimonials.jsx'
 
 const router = createBrowserRouter([
-  { path: "/", element: [<App />], children: [{ path: "/", element: [<Home />] }, { path: "/aboutUs", element: [<AboutUs />] }, { path: "/demo", element: [<BookADemo />] }, { path: "/aiDrafting", element: [<AIDrafting />] }, { path: "/testimonials", element: [<AllTestimonials />] }] }
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs />
+      },
+      {
+        path: "/demo",
+        element: <BookADemo />
+      },
+      {
+        path: "/aiDrafting",
+        element: <AIDrafting />
+      },
+      {
+        path: "/testimonials",
+        element: <AllTestimonials />
+      }
+    ]
+  }
 ])
 
 createRoot(document.getElementById('root')).render(
