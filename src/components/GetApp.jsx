@@ -1,5 +1,5 @@
 import React from "react";
-import phoneImage from "../assets/phone2.png";
+import phoneImage from "../assets/newScreen.png";
 import googleLogo from "../assets/googlelogo.png";
 import { FaApple } from "react-icons/fa";
 

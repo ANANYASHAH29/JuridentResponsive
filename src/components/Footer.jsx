@@ -6,25 +6,33 @@ import DiscordLogo from "../assets/DiscordLogo.svg";
 import JLogoFoot from "../assets/JLogoFoot2.png";
 
 export default function Footer() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "" });
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", query: "" });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const validate = () => {
     const newErrors = {};
-    if (form.name.trim().length < 3) newErrors.name = "Name must be at least 3 characters.";
+    if (form.firstName.trim().length < 2) newErrors.firstName = "First name must be at least 2 characters.";
+    if (form.lastName.trim().length < 2) newErrors.lastName = "Last name must be at least 2 characters.";
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(form.email)) newErrors.email = "Enter a valid email address.";
     const phoneRegex = /^[0-9]{10}$/;
     if (!phoneRegex.test(form.phone)) newErrors.phone = "Phone number must be 10 digits.";
-    if (form.company.trim().length < 3) newErrors.company = "Company name must be at least 3 characters.";
+    if (form.query.trim().length < 3) newErrors.query = "Query must be at least 3 characters.";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    const body = { name: form.name, email: form.email, phoneNumber: form.phone, company: form.company };
+    const body = { 
+      firstName: form.firstName,
+      lastName: form.lastName,
+      email: form.email,
+      phoneNumber: form.phone,
+      query: form.query
+    };
     try {
       const resp = await fetch("http://localhost:5000/send-juridentContact", {
         method: "POST",
@@ -33,7 +41,9 @@ export default function Footer() {
       });
       const respJson = await resp.text();
       console.log(respJson);
-      setForm({ name: "", email: "", phone: "", company: "" });
+      setForm({ firstName: "", lastName: "", email: "", phone: "", query: "" });
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 5000); // Hide after 5 seconds
     } catch (error) {
       console.log(error);
     } finally {
@@ -47,37 +57,89 @@ export default function Footer() {
   };
 
   return (
-    <footer id="help" className="bg-black text-white py-10 px-6 md:px-20">
+    <footer id="help" className="bg-black text-white py-10 px-6 md:px-20 relative">
+      {/* Success Message */}
+      <div
+        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 transform z-50 ${
+          showSuccess ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+        }`}
+      >
+        <div className="bg-black/95 backdrop-blur-sm border-2 border-[#CB9F47] text-white px-8 py-6 rounded-2xl shadow-[0_0_20px_rgba(203,159,71,0.3)] flex items-center space-x-4 min-w-[300px] relative">
+          <button 
+            onClick={() => setShowSuccess(false)}
+            className="absolute top-2 right-2 text-gray-400 hover:text-[#CB9F47] transition-colors duration-200"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div className="bg-[#CB9F47]/20 p-2 rounded-full">
+            <svg className="w-8 h-8 text-[#CB9F47]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-lg font-semibold text-[#CB9F47]">Success!</span>
+            <span className="text-white/90">Thank you for reaching out! We'll get back to you soon.</span>
+          </div>
+        </div>
+      </div>
+
       {/* Contact Form Section */}
       <div className="max-w-7xl mx-auto mb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Side */}
-          <div>
+          <div className="pt-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-            <p className="mb-4 text-lg">We'd love to hear from you! Reach us at:</p>
-            <div className="space-y-1 text-gray-300 text-base leading-relaxed">
-              <p>Email: <a href="mailto:connect@valscotech.com" className="underline text-white">connect@valscotech.com</a></p>
-              <p>Valsco Technology,</p>
-              <p>J-3 Shatabdi Enclave</p>
-              <p>Noida-201301, Uttar Pradesh</p>
+            <h2 className="text-2xl font-bold text-[#CB9F47] mb-4">EMPOWER. TRANSFORM. IGNITE YOUR LEGAL TECH EVOLUTION.</h2>
+            <h3 className="text-xl font-semibold mb-6">Ready to revolutionize your legal practice?</h3>
+            
+                          <div className="space-y-6 text-gray-300 text-base leading-relaxed max-w-xl">
+                <p>
+                  Connect with Valsco today and discover how our cutting-edge legal tech solutions can transform your practice with streamlined workflows and enhanced compliance.
+                </p>
+                
+                <p>
+                  From case management to document automation, we deliver secure and intuitive solutions tailored for law firms, legal departments, and solo practitioners.
+                </p>
+                
+                <p className="font-semibold text-white">
+                  Unlock the future of law with Valsco.
+                </p>
+                
+                <p className="text-[#CB9F47] font-medium">
+                  Schedule a consultation now to begin your legal tech transformation.
+                </p>
             </div>
           </div>
 
           {/* Right Side (Form) */}
           <form
             onSubmit={(e) => { e.preventDefault(); if (validate()) handleSubmit(); }}
-            className="space-y-6 border border-white rounded-lg p-8 bg-black/30 backdrop-blur-sm"
+            className="space-y-6 p-8 bg-black/30 backdrop-blur-sm"
           >
-            {/* Name */}
-            <div className="flex flex-col">
-              <label className="mb-1">Name</label>
-              <input
-                value={form.name}
-                onChange={handleChange("name")}
-                className={`p-2 bg-transparent border-b-[2px] ${errors.name ? 'border-red-500' : 'border-gray-100'} focus-within:border-2 focus-within:border-white  outline-none`}
-                placeholder="Your Name"
-              />
-              {errors.name && <small className="text-red-400">{errors.name}</small>}
+            {/* Name Fields */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="flex flex-col">
+                <label className="mb-1">First Name</label>
+                <input
+                  value={form.firstName}
+                  onChange={handleChange("firstName")}
+                  className={`p-3 bg-transparent border ${errors.firstName ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none`}
+                  placeholder="Enter first name"
+                />
+                {errors.firstName && <small className="text-red-400">{errors.firstName}</small>}
+              </div>
+              <div className="flex flex-col">
+                <label className="mb-1">Last Name</label>
+                <input
+                  value={form.lastName}
+                  onChange={handleChange("lastName")}
+                  className={`p-3 bg-transparent border ${errors.lastName ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none`}
+                  placeholder="Enter last name"
+                />
+                {errors.lastName && <small className="text-red-400">{errors.lastName}</small>}
+              </div>
             </div>
 
             {/* Email */}
@@ -86,8 +148,8 @@ export default function Footer() {
               <input
                 value={form.email}
                 onChange={handleChange("email")}
-                className={`p-2 bg-transparent border-b-[2px] ${errors.email ? 'border-red-500' : 'border-gray-100'} focus-within:border-2 focus-within:border-white  outline-none`}
-                placeholder="Your Email"
+                className={`p-3 bg-transparent border ${errors.email ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none`}
+                placeholder="Enter your email"
               />
               {errors.email && <small className="text-red-400">{errors.email}</small>}
             </div>
@@ -98,29 +160,29 @@ export default function Footer() {
               <input
                 value={form.phone}
                 onChange={handleChange("phone")}
-                className={`p-2 bg-transparent border-b-[2px] ${errors.phone ? 'border-red-500' : 'border-gray-100'} focus-within:border-2 focus-within:border-white  outline-none`}
-                placeholder="Your Phone Number"
+                className={`p-3 bg-transparent border ${errors.phone ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none`}
+                placeholder="Enter phone number"
               />
               {errors.phone && <small className="text-red-400">{errors.phone}</small>}
             </div>
 
-            {/* Company */}
+            {/* Query */}
             <div className="flex flex-col">
-              <label className="mb-1">Company</label>
-              <input
-                value={form.company}
-                onChange={handleChange("company")}
-                className={`p-2 bg-transparent border-b-[2px] ${errors.company ? 'border-red-500' : 'border-gray-100'} focus-within:border-2 focus-within:border-white  outline-none`}
-                placeholder="Your Company/Organization"
+              <label className="mb-1">Query</label>
+              <textarea
+                value={form.query}
+                onChange={handleChange("query")}
+                className={`p-3 bg-transparent border ${errors.query ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none min-h-[100px]`}
+                placeholder="Type your message here"
               />
-              {errors.company && <small className="text-red-400">{errors.company}</small>}
+              {errors.query && <small className="text-red-400">{errors.query}</small>}
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-[50%] p-3 mt-4 text-white font-medium border-1 rounded-md transition
+              className={`w-[50%] p-3 mt-4 text-white font-medium border border-white rounded-3xl transition-all duration-300 transform hover:scale-105
               ${isLoading ? 'opacity-60 cursor-not-allowed' : 'hover:bg-white hover:text-black'} shimmer-button`}
             >
               {isLoading ? (
@@ -132,7 +194,7 @@ export default function Footer() {
                   <span>Sending...</span>
                 </div>
               ) : (
-                "Send Message"
+                "Submit"
               )}
             </button>
           </form>
