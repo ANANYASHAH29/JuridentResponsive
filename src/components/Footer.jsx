@@ -76,7 +76,7 @@ export default function Footer() {
           <div className="bg-[#CB9F47]/20 p-2 rounded-full">
             <svg className="w-8 h-8 text-[#CB9F47]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-            </svg>
+          </svg>
           </div>
           <div className="flex flex-col">
             <span className="text-lg font-semibold text-[#CB9F47]">Success!</span>
@@ -182,7 +182,7 @@ export default function Footer() {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-[50%] p-3 mt-4 text-white font-medium border border-white rounded-3xl transition-all duration-300 transform hover:scale-105
+              className={`cursor-pointer w-[50%] p-3 mt-4 text-white font-medium border border-white rounded-3xl transition-all duration-300 transform hover:scale-105
               ${isLoading ? 'opacity-60 cursor-not-allowed' : 'hover:bg-white hover:text-black'} shimmer-button`}
             >
               {isLoading ? (
@@ -240,8 +240,14 @@ export default function Footer() {
         <div>
           <h2 className="text-white text-lg font-bold mb-3">Use Cases</h2>
           <ul className="space-y-2 text-sm">
-            <li>Case management</li>
-            <li>Legal-Research & Assistance</li>
+            <li>Case Management</li>
+            <li>Legal Assistance(All Bare Acts)</li>
+            <li>AI-Powered Document Drafting</li>
+            <li>Case Sharing & Collaboration</li>
+            <li>Client Management</li>
+            <li>Task & Reminder Automation</li>
+            <li>Calendar & Hearing Date Integration</li>
+            <li>Team Workflow Management</li>
           </ul>
         </div>
 
@@ -250,8 +256,6 @@ export default function Footer() {
           <h2 className="text-white text-lg font-bold mb-3">Company</h2>
           <ul className="space-y-2 text-sm">
             <li> <a href="https://www.valscotech.com/" target="_Blank">About Us</a> </li>
-            <li>Careers</li>
-            <li>FAQs</li>
             <li><a href="https://www.valscotech.com/" target="_Blank">Teams</a> </li>
           </ul>
         </div>

@@ -104,7 +104,7 @@ export default function Navbar() {
           <li key={index} className="relative px-5">
             <button
               onClick={() => handleNavigation(item.path, item.sectionId)}
-              className={`text-[#141414] font-['Work Sans'] font-semibold text-[16px] leading-[22.4px] break-words transition-all duration-300 hover:text-[#CB9F47] 
+              className={`cursor-pointer text-[#141414] font-['Work Sans'] font-semibold text-[16px] leading-[22.4px] break-words transition-all duration-300 hover:text-[#CB9F47] 
               relative after:content-[''] after:absolute after:left-1/2 after:bottom-[-2px] after:w-0 after:h-[2px] after:bg-black 
               after:transition-all after:duration-300 after:transform after:-translate-x-1/2 after:origin-center hover:after:w-full
               ${isActive(item) ? 'text-[#CB9F47] after:w-full' : ''}`}
@@ -119,13 +119,13 @@ export default function Navbar() {
       <div className="flex flex-shrink-0 gap-[38px]">
         <button
           onClick={() => window.open("https://jr-portal.vercel.app/", "_blank")}
-          className="bg-black text-white px-6 py-2 rounded-2xl font-semibold hover:bg-opacity-30 transition-all duration-700 transform hover:scale-105"
+          className="cursor-pointer bg-black text-white px-6 py-2 rounded-2xl font-semibold hover:bg-opacity-30 transition-all duration-700 transform hover:scale-105"
         >
           Explore Jurident
         </button>
         <div className="relative p-[2px] rounded-2xl bg-gradient-to-r from-[#23216E] via-[#D0A95C] to-[#23216E] transition-all duration-700 group hover:bg-gradient-to-r hover:from-[#D0A95C] hover:via-[#23216E] hover:to-[#D0A95C] transform hover:scale-105">
           <button 
-            className="bg-white text-gray-900 px-6 py-2 rounded-2xl font-semibold w-full h-full hover:bg-gray-50 transition-all duration-300" 
+            className="cursor-pointer bg-white text-gray-900 px-6 py-2 rounded-2xl font-semibold w-full h-full hover:bg-gray-50 transition-all duration-300" 
             onClick={() => navigate("/demo")}
           >
             Book a Demo
