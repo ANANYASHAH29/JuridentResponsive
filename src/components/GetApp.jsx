@@ -5,131 +5,66 @@ import { FaApple } from "react-icons/fa";
 
 const GetApp = () => {
   return (
-    <section className="flex flex-col md:flex-row items-center justify-center px-6 md:px-16 lg:px-24 py-12 md:py-20 mx-auto bg-gradient-to-b from-[#FFFFFF] to-[#EAE7FF]">
-      {/* Left Side - Phone Image */}
-      <div className="md:w-1/2 flex justify-center mr-4">
-        {" "}
-        {/* Shifted left slightly */}
-        <img
-          src={phoneImage}
-          alt="Jurident Mobile App"
-          className="w-[140px] md:w-[190px] lg:w-[240px] hover:scale-105 duration-300"
-        />
-      </div>
+  <section className="flex flex-col md:flex-row items-center justify-center px-6 md:px-16 gap-12 md:gap-45
+lg:px-24 py-12 md:py-20 mx-auto bg-gradient-to-b from-[#FFFFFF] to-[#EAE7FF]">
+    
+    {/* Phone Image (left on desktop) */}
+    <div className="md:w-1/2 flex justify-center md:justify-end mr-0 md:mr-8 mb-6 md:mb-0">
+      <img
+        src={phoneImage}
+        alt="Jurident Mobile App"
+        className="w-[140px] md:w-[200px] lg:w-[240px] hover:scale-105 duration-300"
+      />
+    </div>
 
-      {/* Right Side - Text & Buttons */}
-      <div className="md:w-1/2 text-center md:ml-0">
-        {" "}
-        {/* Reduced gap */}
-        {/* Heading */}
-        <h2
-          className="text-[#141414] capitalize"
-          style={{
-            fontSize: "50px",
-            fontFamily: "'Work Sans', sans-serif",
-            fontWeight: 600,
-            lineHeight: "65px",
-            wordWrap: "break-word",
-          }}
+    {/* Text + Buttons (right on desktop) */}
+    <div className="md:w-1/2 text-center md:text-left md:ml-0">
+      {/* Heading */}
+      <h2 className="text-2xl sm:text-3xl md:text-[50px] leading-tight md:leading-[65px] font-semibold text-[#141414] font-['Work_Sans']">
+        Your Legal Partner, <br /> Anytime, Anywhere.
+      </h2>
+
+      {/* Subheading */}
+      <p className="text-lg sm:text-xl md:text-[28px] md:leading-[38px] mt-4 font-medium text-[#141414] font-['Work_Sans'] capitalize">
+        Download Jurident Now!
+      </p>
+
+      {/* Store Buttons */}
+      <div className="flex justify-center md:justify-start gap-4 md:gap-6 mt-6 flex-wrap">
+        {/* App Store */}
+        <a
+          href="https://apps.apple.com/in/app/jurident/id6475091173"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 px-5 py-2.5 bg-white rounded-[18px] shadow-md hover:shadow-lg transition-all"
         >
-          Your Legal Partner, <br /> Anytime, Anywhere.
-        </h2>
-        {/* Paragraph */}
-        <p
-          className="text-[#141414] capitalize mt-4" // Reduced margin here
-          style={{
-            fontSize: "28px",
-            fontFamily: "'Work Sans', sans-serif",
-            fontWeight: 500,
-            lineHeight: "38px",
-            wordWrap: "break-word",
-          }}
+          <FaApple className="text-black w-6 h-6 md:w-[30px] md:h-[32px]" />
+          <span className="text-sm md:text-[22px] font-medium font-['Poppins'] text-black">
+            App Store
+          </span>
+        </a>
+
+        {/* Play Store */}
+        <a
+          href="https://play.google.com/store/apps/details?id=com.jurident.valsco&pli=1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 px-5 py-2.5 bg-white rounded-[18px] shadow-md hover:shadow-lg transition-all"
         >
-          Download Jurident Now!
-        </p>
-        {/* Download Buttons */}
-        <div className="flex justify-center gap-6 mt-6">
-          {" "}
-          {/* Reduced gap */}
-          {/* App Store Button */}
-          <a
-            href="https://apps.apple.com/in/app/jurident/id6475091173"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-5 py-2.5 bg-white rounded-[18px] shadow-[0px_3px_6px_#D0C8FF] hover:shadow-lg transition-all"
-            style={{
-              paddingLeft: 18,
-              paddingRight: 18,
-              paddingTop: 10,
-              paddingBottom: 10,
-              borderRadius: 18,
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 10,
-              display: "inline-flex",
-              boxShadow: "0px 3px 6px #D0C8FF",
-            }}
-          >
-            <FaApple
-              className="text-black"
-              style={{ width: 30, height: 32, position: "relative" }}
-            />
-            <span
-              className="text-black"
-              style={{
-                fontSize: 22,
-                fontFamily: "Poppins, sans-serif",
-                fontWeight: 500,
-                textAlign: "center",
-                position: "relative",
-                wordWrap: "break-word",
-              }}
-            >
-              App Store
-            </span>
-          </a>
-          {/* Play Store Button */}
-          <a
-            href="https://play.google.com/store/apps/details?id=com.jurident.valsco&pli=1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-5 py-2.5 bg-white rounded-[18px] shadow-[0px_3px_6px_#D0C8FF] hover:shadow-lg transition-all"
-            style={{
-              paddingLeft: 18,
-              paddingRight: 18,
-              paddingTop: 10,
-              paddingBottom: 10,
-              borderRadius: 18,
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 10,
-              display: "inline-flex",
-              boxShadow: "0px 3px 6px #D0C8FF",
-            }}
-          >
-            <img
-              src={googleLogo}
-              alt="Google Play Logo"
-              style={{ width: 30, height: 32, position: "relative" }}
-            />
-            <span
-              className="text-black"
-              style={{
-                fontSize: 22,
-                fontFamily: "Poppins, sans-serif",
-                fontWeight: 500,
-                textAlign: "center",
-                position: "relative",
-                wordWrap: "break-word",
-              }}
-            >
-              Play Store
-            </span>
-          </a>
-        </div>
+          <img
+            src={googleLogo}
+            alt="Google Play Logo"
+            className="w-6 h-6 md:w-[30px] md:h-[32px]"
+          />
+          <span className="text-sm md:text-[22px] font-medium font-['Poppins'] text-black">
+            Play Store
+          </span>
+        </a>
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
+
 };
 
 export default GetApp;

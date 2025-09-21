@@ -26,7 +26,7 @@ export default function Footer() {
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    const body = { 
+    const body = {
       firstName: form.firstName,
       lastName: form.lastName,
       email: form.email,
@@ -39,11 +39,10 @@ export default function Footer() {
         body: JSON.stringify(body),
         headers: { "Content-Type": "application/json" }
       });
-      const respJson = await resp.text();
-      console.log(respJson);
+      await resp.text();
       setForm({ firstName: "", lastName: "", email: "", phone: "", query: "" });
       setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 5000); // Hide after 5 seconds
+      setTimeout(() => setShowSuccess(false), 5000);
     } catch (error) {
       console.log(error);
     } finally {
@@ -60,14 +59,14 @@ export default function Footer() {
     <footer id="help" className="bg-black text-white py-10 px-6 md:px-20 relative">
       {/* Success Message */}
       <div
-        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 transform z-50 ${
-          showSuccess ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+        className={`fixed top-1/2 left-1/2 -translate-x-1/2 transition-all duration-500 transform z-50 ${
+          showSuccess ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
         }`}
       >
         <div className="bg-black/95 backdrop-blur-sm border-2 border-[#CB9F47] text-white px-8 py-6 rounded-2xl shadow-[0_0_20px_rgba(203,159,71,0.3)] flex items-center space-x-4 min-w-[300px] relative">
-          <button 
+          <button
             onClick={() => setShowSuccess(false)}
-            className="absolute top-2 right-2 text-gray-400 hover:text-[#CB9F47] transition-colors duration-200"
+            className="absolute top-2 right-2 text-gray-400 hover:text-[#CB9F47]"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -76,7 +75,7 @@ export default function Footer() {
           <div className="bg-[#CB9F47]/20 p-2 rounded-full">
             <svg className="w-8 h-8 text-[#CB9F47]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-          </svg>
+            </svg>
           </div>
           <div className="flex flex-col">
             <span className="text-lg font-semibold text-[#CB9F47]">Success!</span>
@@ -85,163 +84,131 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Contact Form Section */}
+      {/* Contact Section */}
       <div className="max-w-7xl mx-auto mb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Side */}
           <div className="pt-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-            <h2 className="text-2xl font-bold text-[#CB9F47] mb-4">EMPOWER. TRANSFORM. IGNITE YOUR LEGAL TECH EVOLUTION.</h2>
-            <h3 className="text-xl font-semibold mb-6">Ready to revolutionize your legal practice?</h3>
-            
-                          <div className="space-y-6 text-gray-300 text-base leading-relaxed max-w-xl">
-                <p>
-                  Connect with Valsco today and discover how our cutting-edge legal tech solutions can transform your practice with streamlined workflows and enhanced compliance.
-                </p>
-                
-                <p>
-                  From case management to document automation, we deliver secure and intuitive solutions tailored for law firms, legal departments, and solo practitioners.
-                </p>
-                
-                <p className="font-semibold text-white">
-                  Unlock the future of law with Valsco.
-                </p>
-                
-                <p className="text-[#CB9F47] font-medium">
-                  Schedule a consultation now to begin your legal tech transformation.
-                </p>
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6">Contact Us</h1>
+            <h2 className="text-lg md:text-2xl font-bold text-[#CB9F47] mb-4">
+              EMPOWER. TRANSFORM. IGNITE YOUR LEGAL TECH EVOLUTION.
+            </h2>
+            <h3 className="text-base md:text-xl font-semibold mb-6">Ready to revolutionize your legal practice?</h3>
+
+            <div className="space-y-4 text-sm md:text-base leading-relaxed text-gray-300 max-w-xl">
+              <p>
+                Connect with Valsco today and discover how our cutting-edge legal tech solutions can transform your practice.
+              </p>
+              <p>
+                From case management to document automation, we deliver secure and intuitive solutions tailored for law firms.
+              </p>
+              <p className="font-semibold text-white">Unlock the future of law with Valsco.</p>
+              <p className="text-[#CB9F47] font-medium">Schedule a consultation now to begin your transformation.</p>
             </div>
           </div>
 
           {/* Right Side (Form) */}
           <form
             onSubmit={(e) => { e.preventDefault(); if (validate()) handleSubmit(); }}
-            className="space-y-6 p-8 bg-black/30 backdrop-blur-sm"
+            className="space-y-6 p-6 md:p-8 bg-black/30 backdrop-blur-sm"
           >
-            {/* Name Fields */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex flex-col">
-                <label className="mb-1">First Name</label>
+                <label className="mb-1 text-sm md:text-base">First Name</label>
                 <input
                   value={form.firstName}
                   onChange={handleChange("firstName")}
-                  className={`p-3 bg-transparent border ${errors.firstName ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none`}
+                  className={`p-3 bg-transparent border ${errors.firstName ? "border-red-500" : "border-gray-100"} rounded-lg focus:border-2 focus:border-white outline-none`}
                   placeholder="Enter first name"
                 />
                 {errors.firstName && <small className="text-red-400">{errors.firstName}</small>}
               </div>
               <div className="flex flex-col">
-                <label className="mb-1">Last Name</label>
+                <label className="mb-1 text-sm md:text-base">Last Name</label>
                 <input
                   value={form.lastName}
                   onChange={handleChange("lastName")}
-                  className={`p-3 bg-transparent border ${errors.lastName ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none`}
+                  className={`p-3 bg-transparent border ${errors.lastName ? "border-red-500" : "border-gray-100"} rounded-lg focus:border-2 focus:border-white outline-none`}
                   placeholder="Enter last name"
                 />
                 {errors.lastName && <small className="text-red-400">{errors.lastName}</small>}
               </div>
             </div>
 
-            {/* Email */}
             <div className="flex flex-col">
-              <label className="mb-1">Email</label>
+              <label className="mb-1 text-sm md:text-base">Email</label>
               <input
                 value={form.email}
                 onChange={handleChange("email")}
-                className={`p-3 bg-transparent border ${errors.email ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none`}
+                className={`p-3 bg-transparent border ${errors.email ? "border-red-500" : "border-gray-100"} rounded-lg focus:border-2 focus:border-white outline-none`}
                 placeholder="Enter your email"
               />
               {errors.email && <small className="text-red-400">{errors.email}</small>}
             </div>
 
-            {/* Phone */}
             <div className="flex flex-col">
-              <label className="mb-1">Phone</label>
+              <label className="mb-1 text-sm md:text-base">Phone</label>
               <input
                 value={form.phone}
                 onChange={handleChange("phone")}
-                className={`p-3 bg-transparent border ${errors.phone ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none`}
+                className={`p-3 bg-transparent border ${errors.phone ? "border-red-500" : "border-gray-100"} rounded-lg focus:border-2 focus:border-white outline-none`}
                 placeholder="Enter phone number"
               />
               {errors.phone && <small className="text-red-400">{errors.phone}</small>}
             </div>
 
-            {/* Query */}
             <div className="flex flex-col">
-              <label className="mb-1">Query</label>
+              <label className="mb-1 text-sm md:text-base">Query</label>
               <textarea
                 value={form.query}
                 onChange={handleChange("query")}
-                className={`p-3 bg-transparent border ${errors.query ? 'border-red-500' : 'border-gray-100'} rounded-lg focus:border-2 focus:border-white outline-none min-h-[100px]`}
+                className={`p-3 bg-transparent border ${errors.query ? "border-red-500" : "border-gray-100"} rounded-lg focus:border-2 focus:border-white outline-none min-h-[100px]`}
                 placeholder="Type your message here"
               />
               {errors.query && <small className="text-red-400">{errors.query}</small>}
             </div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isLoading}
-              className={`cursor-pointer w-[50%] p-3 mt-4 text-white font-medium border border-white rounded-3xl transition-all duration-300 transform hover:scale-105
-              ${isLoading ? 'opacity-60 cursor-not-allowed' : 'hover:bg-white hover:text-black'} shimmer-button`}
-            >
-              {isLoading ? (
-                <div className="flex items-center justify-center space-x-2">
-                  <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="white" strokeWidth="4" fill="none" />
-                    <path className="opacity-75" fill="white" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-                  </svg>
-                  <span>Sending...</span>
-                </div>
-              ) : (
-                "Submit"
-              )}
-            </button>
+<div className="w-full md:w-[50%] flex md:justify-start justify-center">
+  <button
+    className={`
+      w-full md:w-65 px-6 py-2 md:py-3 mt-4 font-medium rounded-3xl border border-white
+      text-white transition-all duration-300 transform hover:scale-105
+      ${isLoading ? "opacity-60 cursor-not-allowed" : ""}
+      moving-grey-gradient
+    `}
+  >
+    Submit
+  </button>
+</div>
+         
           </form>
         </div>
       </div>
 
-      {/* Footer Content */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
-        {/* Left Section - Company Info */}
+      {/* Footer Grid */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start text-sm md:text-base">
+        {/* Left */}
         <div>
           <div className="flex items-center mb-3">
-            <img
-              src={JLogoFoot}
-              alt="Jurident Logo"
-              className="w-8 h-8 object-contain"
-            />
-            <h2 className="text-[#CB9F47] text-xl font-bold ml-2">Jurident</h2>
+            <img src={JLogoFoot} alt="Jurident Logo" className="w-8 h-8 object-contain" />
+            <h2 className="text-[#CB9F47] text-lg font-bold ml-2">Jurident</h2>
           </div>
-          <p className="text-sm leading-6">
-            Valsco Technology <br />
-            J-3 Shatabdi Enclave <br />
-            Noida-201301, Uttar Pradesh
-          </p>
-          <p className="mt-3 text-sm">connect@valscotech.com</p>
-          <p className="mt-4 text-sm font-semibold">Join our community</p>
-          <div className="flex items-center gap-4 mt-2">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src={DiscordLogo} alt="Discord" className="w-5 h-5" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src={YoutubeLogo} alt="YouTube" className="w-5 h-5" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src={TwitterLogo} alt="Twitter" className="w-5 h-5" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src={InstagramLogo} alt="Instagram" className="w-5 h-5" />
-            </a>
+          <p>Valsco Technology<br />J-3 Shatabdi Enclave<br />Noida-201301, Uttar Pradesh</p>
+          <p className="mt-3">connect@valscotech.com</p>
+          <p className="mt-4 font-semibold">Join our community</p>
+          <div className="flex gap-4 mt-2">
+            {[DiscordLogo, YoutubeLogo, TwitterLogo, InstagramLogo].map((logo, i) => (
+              <img key={i} src={logo} className="w-5 h-5" alt="social" />
+            ))}
           </div>
         </div>
 
-        {/* Middle Section - Use Cases */}
+        {/* Use Cases */}
         <div>
-          <h2 className="text-white text-lg font-bold mb-3">Use Cases</h2>
-          <ul className="space-y-2 text-sm">
+          <h2 className="text-base md:text-lg font-bold mb-3">Use Cases</h2>
+          <ul className="space-y-2">
             <li>Case Management</li>
-            <li>Legal Assistance(All Bare Acts)</li>
+            <li>Legal Assistance (All Bare Acts)</li>
             <li>AI-Powered Document Drafting</li>
             <li>Case Sharing & Collaboration</li>
             <li>Client Management</li>
@@ -251,18 +218,18 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Right Section - Company Links */}
+        {/* Company */}
         <div>
-          <h2 className="text-white text-lg font-bold mb-3">Company</h2>
-          <ul className="space-y-2 text-sm">
-            <li> <a href="https://www.valscotech.com/" target="_Blank">About Us</a> </li>
-            <li><a href="https://www.valscotech.com/" target="_Blank">Teams</a> </li>
+          <h2 className="text-base md:text-lg font-bold mb-3">Company</h2>
+          <ul className="space-y-2">
+            <li><a href="https://www.valscotech.com/" target="_blank" rel="noopener noreferrer">About Us</a></li>
+            <li><a href="https://www.valscotech.com/" target="_blank" rel="noopener noreferrer">Teams</a></li>
           </ul>
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="mt-6 border-t border-gray-600 pt-4 text-left text-sm">
+      {/* Copyright */}
+      <div className="mt-6 border-t border-gray-600 pt-4 text-left text-xs md:text-sm">
         © 2025, Valsco Technology. All Rights Reserved
       </div>
     </footer>

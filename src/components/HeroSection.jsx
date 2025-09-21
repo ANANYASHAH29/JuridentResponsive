@@ -1,37 +1,81 @@
 import React from "react";
 import { HashLink } from "react-router-hash-link";
+import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <div className="relative group">
-      <section className="flex flex-col md:flex-row items-center justify-center px-8 md:px-16 lg:px-24 py-8 md:py-16 mx-auto relative">
-        {/* Left Side - Text Content (Moves Left when hovering over Laptop) */}
-        <div className="max-w-lg ml-10 mt-5 md:mt-10 transition-all duration-500 ease-out group-hover:-translate-x-7">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#141414] leading-tight">
-            The Smartest Way <br /> To Manage Your <br /> Legal Practice.
-          </h1>
-          <p className="text-[#141414] text-lg mt-4">
-            Expand Your Reach, Streamline Your Workflow, Get Paid Faster.
-          </p>
-          {/* Button (Only Animates When Hovering Over It) */}
-          <button className="mt-6 bg-[#D0A95C] text-white px-10 py-3 w-44 rounded-3xl text-lg font-semibold transition-all duration-300 relative overflow-hidden group/button">
-            <span className="relative inline-block transition-all duration-300 ease-out group-hover/button:-translate-y-1 group-hover/button:scale-105">
-              <HashLink to="#help" > Get Started</HashLink>
+    <div className="relative bg-gradient-to-br from-white via-[#faf9f6] to-white overflow-hidden">
 
-            </span>
-            <span className="absolute left-1/2 bottom-0 w-0 h-2 bg-black/60 rounded-b-2xl transition-all duration-300 ease-out group-hover/button:w-full group-hover/button:left-0"></span>
-          </button>
+      {/* Decorative Golden Blob */}
+      <div className="absolute top-[-80px] right-[-80px] w-[200px] h-[200px] bg-[#d0a95c]/20 rounded-full blur-[100px] z-0"></div>
+
+      <section className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between px-6 sm:px-10 md:px-24 pt-32 md:pt-48 pb-20 max-w-screen-xl mx-auto">
+
+        {/* Desktop Left Text Content */}
+        <div className="hidden md:block w-full md:w-1/2 text-left">
+          <h1 className="text-5xl lg:text-6xl font-bold text-[#141414] leading-tight mb-6">
+            The Smartest Way <br />
+            to Manage Your <br />
+            Legal Practice.
+          </h1>
+          <p className="text-lg lg:text-xl text-gray-600 mt-5 max-w-md leading-relaxed">
+            Expand your reach, streamline your workflow, and get paid faster — all in one smart legal tech suite.
+          </p>
+          <div className="mt-8">
+            <button className="bg-[#D0A95C] hover:bg-[#c59745] text-white px-8 py-3 rounded-full text-base font-medium shadow-md transition transform hover:scale-105">
+              <HashLink to="#help">Get Started</HashLink>
+            </button>
+          </div>
         </div>
 
-        {/* Right Side - Image (Triggers Left Section Movement on Hover) */}
-        <div className="mt-8 md:mt-5 md:w-1/2 flex justify-center mr-10 transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-x-5">
+        {/* Right: Image and Mobile Content */}
+        <div className="w-full md:w-1/2 flex flex-col items-center mb-10 md:mb-0">
+
+          {/* Laptop Image – Hover scale on desktop, pulse animation on mobile */}
           <img
             src="/macbookfinal.png"
-            alt="Laptop with Jurident Dashboard"
-            className="w-full max-w-2xl"
+            alt="Jurident Dashboard"
+            className="w-[95%] sm:w-[90%] md:w-[100%] lg:w-[120%] max-w-[850px] drop-shadow-2xl 
+              md:transition-transform md:duration-500 md:hover:scale-105 
+              block md:block animate-mobile-bounce"
           />
+
+          {/* Mobile: Heading + Paragraph + Button */}
+          <div className="block md:hidden mt-6 px-2 text-center">
+            <h1 className="text-3xl sm:text-4xl font-bold text-[#141414] text-center leading-snug mb-4">
+              The Smartest Way <br />
+              to Manage Your <br />
+              Legal Practice.
+            </h1>
+            <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto leading-relaxed mb-6">
+              Expand your reach, streamline your workflow, and get paid faster — all in one smart legal tech suite.
+            </p>
+            <button className="bg-gradient-to-r from-[#D0A95C] to-[#c59745] text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-md mx-auto flex items-center justify-center gap-2 transition duration-300 transform hover:scale-105">
+              <HashLink to="#help">Get Started</HashLink>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </section>
+
+      {/* Tailwind Custom Animation for Mobile Bounce */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .animate-mobile-bounce {
+              animation: bounceScale 2.5s ease-in-out infinite;
+            }
+          }
+          @keyframes bounceScale {
+            0%, 100% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.05);
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

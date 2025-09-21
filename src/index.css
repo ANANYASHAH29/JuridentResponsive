@@ -35,3 +35,29 @@ html {
     left: 150%;
   }
 }
+
+@keyframes thinGreySlide {
+  0% {
+    background-position: 150% 0%;
+  }
+  100% {
+    background-position: -150% 0%;
+  }
+}
+
+.moving-grey-gradient {
+  background: linear-gradient(
+    135deg,
+    #1f1f1f 0%,
+    #1f1f1f 50%,
+    #454545 65%,
+    #1f1f1f 70%,
+    #1f1f1f 110%
+  );
+  background-size: 300% 100%;
+  animation: thinGreySlide 6s linear infinite;
+}
+
+
+
+
